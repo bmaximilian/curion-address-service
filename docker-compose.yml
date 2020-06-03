@@ -1,0 +1,43 @@
+version: '3'
+services:
+  mssql:
+    image: mssql
+    build: mssql
+    environment:
+      SA_PASSWORD: Super(!)Secret0
+      MSSQL_DB: curion_address_api
+      MSSQL_USER: address_api
+      MSSQL_PASSWORD: Super!Secret1
+    volumes:
+      - mssql-data:/var/opt/mssql/data
+    ports:
+      - 1433:1433
+  nginx:
+    image: nginx
+    build: nginx
+    environment:
+      APP_ENV: development
+    volumes:
+      - ./address-api/public:/var/www/address-service.curion.ch/public/
+    ports:
+      - 80:80
+      - 443:443
+    depends_on:
+      - address-api
+  address-api:
+    image: address-api
+    build: address-api
+    environment:
+      PHP_XDEBUG_ENABLED: 1
+      DB_HOST: mssql
+      DB_PORT: 1433
+      DB_DATABASE: curion_address_api
+      DB_USERNAME: address_api
+      DB_PASSWORD: Super!Secret1
+    command: bash -c "composer install && ./start.sh"
+    volumes:
+      - ./address-api:/var/www/address-service.curion.ch
+    ports:
+      - 9000:9000
+volumes:
+  mssql-data:
