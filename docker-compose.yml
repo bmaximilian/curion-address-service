@@ -19,9 +19,6 @@ services:
       APP_ENV: development
     volumes:
       - ./address-api/public:/var/www/address-service.curion.ch/public/
-    ports:
-      - 80:80
-      - 443:443
     depends_on:
       - address-api
   address-api:
@@ -38,6 +35,8 @@ services:
     volumes:
       - ./address-api:/var/www/address-service.curion.ch
     ports:
+      - 80:80
+      - 443:443
       - 9000:9000
 volumes:
   mssql-data:
