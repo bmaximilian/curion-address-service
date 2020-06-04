@@ -9,6 +9,8 @@ class CreateUsersTable extends Migration
     /**
      * Run the migrations.
      *
+     * @SuppressWarnings(PHPMD.StaticAccess)
+     * @SuppressWarnings(PHPMD.ShortMethodName)
      * @return void
      */
     public function up()
@@ -27,6 +29,7 @@ class CreateUsersTable extends Migration
     /**
      * Reverse the migrations.
      *
+     * @SuppressWarnings(PHPMD.StaticAccess)
      * @return void
      */
     public function down()

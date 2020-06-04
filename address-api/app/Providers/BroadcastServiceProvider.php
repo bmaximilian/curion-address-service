@@ -10,6 +10,7 @@ class BroadcastServiceProvider extends ServiceProvider
     /**
      * Bootstrap any application services.
      *
+     * @SuppressWarnings(PHPMD.StaticAccess)
      * @return void
      */
     public function boot()
