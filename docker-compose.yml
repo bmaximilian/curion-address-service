@@ -28,6 +28,7 @@ services:
     image: address-api
     build: address-api
     environment:
+      APP_ENV: development
       PHP_XDEBUG_ENABLED: 1
       DB_HOST: mssql
       DB_PORT: 1433
@@ -39,5 +40,15 @@ services:
       - ./address-api:/var/www/address-service.curion.ch
     ports:
       - 9000:9000
+  address-frontend:
+    image: address-frontend
+    build: address-frontend
+    environment:
+      NODE_ENV: development
+    command: bash -c "npm i && npm start"
+    volumes:
+      - ./address-frontend:/opt/app
+    ports:
+      - 4200:4200
 volumes:
   mssql-data:

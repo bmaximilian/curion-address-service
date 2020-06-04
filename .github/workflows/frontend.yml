@@ -1,0 +1,49 @@
+name: address-frontend CI
+
+on:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    env:
+      CI: true
+      NODE_ENV: production
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js 12.16.1
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.16.1
+      - name: Cache Node.js modules
+        uses: actions/cache@v2
+        with:
+          # npm cache files are stored in `~/.npm` on Linux/macOS
+          path: ~/.npm
+          key: ${{ runner.OS }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.OS }}-node-
+            ${{ runner.OS }}-
+
+      - name: Install dependencies
+        run: |
+          cd address-frontend
+          npm install
+          cd ..
+        env:
+          NODE_ENV: development
+      - name: Lint
+        run: |
+          cd address-frontend
+          npm run lint
+          cd ..
+      - name: Build
+        run: |
+          cd address-frontend
+          npm run build -- --prod
+          cd ..
+      - name: Test
+        run: |
+          cd address-frontend
+          npm test
+          cd ..
