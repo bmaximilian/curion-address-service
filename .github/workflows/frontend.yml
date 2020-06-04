@@ -19,10 +19,22 @@ jobs:
       - name: Install dependencies
         run: npm install
       - name: Lint
-        run: npm run lint
+        run: |
+          cd address-frontend
+          npm run lint
+          cd ..
       - name: Build
-        run: npm run build -- --prod
+        run: |
+          cd address-frontend
+          npm run build -- --prod
+          cd ..
       - name: Test
-        run: npm test -- --configuration=ci
+        run: |
+          cd address-frontend
+          npm test -- --configuration=ci
+          cd ..
       - name: E2E
-        run: npm run e2e -- --configuration=ci
+        run: |
+          cd address-frontend
+          npm run e2e -- --configuration=ci
+          cd ..
