@@ -17,7 +17,10 @@ jobs:
           node-version: 12.16.1
 
       - name: Install dependencies
-        run: npm install
+        run: |
+          cd address-frontend
+          npm install
+          cd ..
         env:
           NODE_ENV: development
       - name: Lint
