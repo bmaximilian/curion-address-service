@@ -2,9 +2,13 @@ name: address-frontend CI
 
 on:
   pull_request:
+  push:
+    branches:
+      - development
+      - master
 
 jobs:
-  test:
+  test_frontend:
     runs-on: ubuntu-latest
     env:
       CI: true

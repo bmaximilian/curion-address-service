@@ -2,9 +2,13 @@ name: address-api CI
 
 on:
   pull_request:
+  push:
+    branches:
+      - development
+      - master
 
 jobs:
-  test:
+  test_api:
     runs-on: ubuntu-latest
     services:
       db:
