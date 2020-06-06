@@ -11,13 +11,12 @@ use App\Addresses\Database\Models\Salutation;
 use Illuminate\Support\Collection;
 
 class SalutationRepository {
-
     /**
      * Finds all salutations
      *
      * @return Collection<Salutation>
      */
     public function findAll(): Collection {
-        Salutation::all();
+        return Salutation::all();
     }
 }
