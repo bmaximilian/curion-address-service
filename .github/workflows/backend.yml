@@ -50,18 +50,40 @@ jobs:
           sudo apt-get install -y mysql-client
           mysql --host 0.0.0.0 --port 3307 -uroot -psupersecret -e "SHOW DATABASES"
           mysql --host 0.0.0.0 --port 3307 -ucurion-address-api -ptest123 -e "SHOW DATABASES"
+      - name: Get Composer Cache Directory
+        id: composer-cache
+        run: |
+          cd address-api
+          echo "::set-output name=dir::$(composer config cache-files-dir)"
+          cd ..
+
+      - name: Cache Composer Downloads
+        uses: actions/cache@v1
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-composer-
+
+      - name: Cache PHP dependencies
+        uses: actions/cache@v1
+        with:
+          path: address-api/vendor
+          key: ${{ runner.OS }}-build-${{ hashFiles('**/composer.lock') }}
+
       - name: Setup Address API
         run: |
           cd address-api
           cp .env.example .env
           composer install --no-progress --no-suggest --prefer-dist --optimize-autoloader
           php artisan key:generate
+          php artisan optimize
           cd ..
 
       - name: Detect Mess
         run: |
           cd address-api
-          vendor/bin/phpmd app,config,database,routes,tests ansi cleancode,codesize,controversial,design,naming,unusedcode
+          vendor/bin/phpmd app,config,database,routes,tests ansi phpmd.xml
           cd ..
 
       - name: Static analyze
@@ -74,6 +96,7 @@ jobs:
         run: |
           cd address-api
           php artisan migrate --force
+          php artisan db:seed --force
           cd ..
 
       - name: Test App API
