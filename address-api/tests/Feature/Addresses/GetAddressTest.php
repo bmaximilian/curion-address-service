@@ -63,7 +63,7 @@ class GetAddressTest extends TestCase
         $response->assertStatus(404);
         $response->assertExactJson([
             'status' => 404,
-            'message' => "Address with id $addressId not found",
+            'message' => "Could not find Address with id $addressId",
         ]);
     }
 }
