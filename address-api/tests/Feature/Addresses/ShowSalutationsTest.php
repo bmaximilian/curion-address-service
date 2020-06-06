@@ -17,6 +17,6 @@ class ShowSalutationsTest extends TestCase
 
         $response->assertStatus(200);
         $response->assertJsonCount(2, 'data');
-        $response->assertJsonStructure(['data' => ['id', 'key']]);
+        $response->assertJsonStructure(['data' => [['id', 'key']]]);
     }
 }
