@@ -1,13 +1,9 @@
 <?php
-/**
- * Created on 06.06.20.
- *
- * @author Maximilian Beck <contact@maximilianbeck.de>
- */
 
 namespace App\Addresses\Database\Repositories;
 
 use App\Addresses\Database\Models\Address;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Collection;
 
 class AddressRepository {
@@ -19,5 +15,16 @@ class AddressRepository {
      */
     public function findAll(): Collection {
         return Address::all();
+    }
+
+    /**
+     * Finds one address
+     *
+     * @param string $id - Id of the requested address
+     * @return Address
+     * @throws ModelNotFoundException
+     */
+    public function findById(string $id): Address {
+        return Address::findOrFail($id);
     }
 }

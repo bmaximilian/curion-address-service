@@ -35,6 +35,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  * @method static \Illuminate\Database\Eloquent\Builder|Address whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Address whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Address find($id)
+ * @method static \Illuminate\Database\Eloquent\Builder|Address findOrFail($id)
  * @property-read Salutation|null $salutation
  */
 class Address extends Model

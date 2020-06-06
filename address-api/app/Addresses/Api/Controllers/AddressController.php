@@ -6,6 +6,7 @@ use App\Addresses\Api\Resources\AddressResource;
 use App\Addresses\Database\Models\Address;
 use App\Addresses\Database\Repositories\AddressRepository;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 use Illuminate\Http\Response;
 
@@ -35,11 +36,13 @@ class AddressController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  Address  $address
-     * @return Response
+     * @param  string  $id
+     * @return JsonResource
      */
-    public function show(Address $address): Response
+    public function show(string $id): JsonResource
     {
-        return response($address->toJson());
+        $address = $this->addressRepository->findById($id);
+
+        return new AddressResource($address);
     }
 }

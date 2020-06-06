@@ -21,6 +21,8 @@ use Illuminate\Http\Resources\Json\JsonResource;
  * @package App\Addresses\Api\Resources
  */
 class AddressResource extends JsonResource {
+    public static $wrap = '';
+
     /**
      * Transform the resource into an array.
      *
