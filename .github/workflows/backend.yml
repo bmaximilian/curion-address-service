@@ -61,7 +61,7 @@ jobs:
       - name: Detect Mess
         run: |
           cd address-api
-          vendor/bin/phpmd app,config,database,routes,tests ansi cleancode,codesize,controversial,design,naming,unusedcode
+          vendor/bin/phpmd app,config,database,routes,tests ansi phpmd.xml
           cd ..
 
       - name: Static analyze
