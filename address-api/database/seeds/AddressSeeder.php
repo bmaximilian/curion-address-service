@@ -12,6 +12,10 @@ class AddressSeeder extends Seeder
      */
     public function run()
     {
+        if (Address::all()->count() > 0) {
+            return;
+        }
+
         factory(Address::class, 50)->create();
     }
 }

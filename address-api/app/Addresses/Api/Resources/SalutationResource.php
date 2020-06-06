@@ -13,13 +13,38 @@ use Illuminate\Http\Resources\Json\JsonResource;
 /**
  * Class SalutationResource
  *
+ * @OA\Schema(
+ *     title="SalutationResource",
+ *     description="Salutation resource",
+ *     type="object",
+ *     required={"id","key"},
+ *     @OA\Xml(
+ *         name="SalutationResource"
+ *     )
+ * )
+ * @OA\Property(
+ *      title="id",
+ *      property="id",
+ *      description="Id of the salutation",
+ *      example="1",
+ *      format="int64",
+ * )
+ * @OA\Property(
+ *      title="key",
+ *      property="key",
+ *      description="Salutation key",
+ *      example="mr",
+ * )
+ *
  * @property int $id
  * @property string $key
  * @property string $created_at
  * @property string $updated_at
  * @package App\Addresses\Api\Resources
  */
-class SalutationResource extends JsonResource {
+class SalutationResource extends JsonResource
+{
+
     /**
      * Transform the resource into an array.
      *

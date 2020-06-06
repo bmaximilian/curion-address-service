@@ -74,6 +74,7 @@ jobs:
         run: |
           cd address-api
           php artisan migrate --force
+          php artisan db:seed --force
           cd ..
 
       - name: Test App API
