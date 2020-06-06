@@ -2,6 +2,7 @@
 
 namespace App\Addresses\Database\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
@@ -19,7 +20,6 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  * @property string $postal_code
  * @property string $city
  * @property \Illuminate\Support\Carbon|null $birthday
- *
  * @mixin \Eloquent
  * @method static \Illuminate\Database\Eloquent\Builder|Address newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Address newQuery()
@@ -34,10 +34,13 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  * @method static \Illuminate\Database\Eloquent\Builder|Address whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Address whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Address whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Address find($id)
  * @property-read Salutation|null $salutation
  */
 class Address extends Model
 {
+    protected $with = ['salutation'];
+
     /**
      * Define relationship between salutation and address
      *
@@ -46,5 +49,16 @@ class Address extends Model
     public function salutation(): BelongsTo
     {
         return $this->belongsTo(Salutation::class);
+    }
+
+    /**
+     * Parse birthday to carbon instance
+     *
+     * @param string $date - The date as string
+     * @return Carbon - The parsed carbon instance
+     */
+    public function getBirthdayAttribute(string $date): Carbon
+    {
+        return Carbon::parse($date);
     }
 }

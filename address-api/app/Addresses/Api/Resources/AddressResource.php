@@ -1,9 +1,4 @@
 <?php
-/**
- * Created on 06.06.20.
- *
- * @author Maximilian Beck <contact@maximilianbeck.de>
- */
 
 namespace App\Addresses\Api\Resources;
 
@@ -11,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 /**
- * Class SalutationResource
+ * Class AddressResource
  *
  * @property int $id
  * @property \Illuminate\Support\Carbon|null $created_at
