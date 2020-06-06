@@ -4,14 +4,14 @@ namespace Tests\Feature\Addresses;
 
 use Tests\TestCase;
 
-class ShowSalutationsTest extends TestCase
+class ListSalutationsTest extends TestCase
 {
     /**
      * A basic test example.
      *
      * @return void
      */
-    public function testShowAllSalutations(): void
+    public function testListAllSalutations(): void
     {
         $response = $this->get('/api/v1/salutations');
 
