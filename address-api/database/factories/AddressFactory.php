@@ -2,8 +2,8 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Address;
-use App\Salutation;
+use App\Addresses\Database\Models\Address;
+use App\Addresses\Database\Models\Salutation;
 use Faker\Generator as Faker;
 
 $factory->define(Address::class, static function (Faker $faker) {

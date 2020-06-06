@@ -23,6 +23,8 @@ class CreateAddressesTable extends Migration
             $table->string('postal_code', '5');
             $table->string('city');
             $table->date('birthday');
+
+            $table->foreign('salutation_id')->references('id')->on('salutations');
         });
     }
 

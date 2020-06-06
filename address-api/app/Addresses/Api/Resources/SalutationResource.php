@@ -13,7 +13,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
 /**
  * Class SalutationResource
  *
- * @property string $id
+ * @property int $id
  * @property string $key
  * @property string $created_at
  * @property string $updated_at

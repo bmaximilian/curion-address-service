@@ -5,20 +5,21 @@ namespace App\Addresses\Database\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * App\Salutation
+ * App\Addresses\Database\Models\Salutation
  *
- * @property string $id
+ * @property int $id
  * @property string $key
- * @property string $created_at
- * @property string $updated_at
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder|Salutation newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Salutation newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Salutation query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Salutation whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Salutation whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Salutation whereKey($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Salutation whereUpdatedAt($value)
  * @mixin \Eloquent
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Salutation newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Salutation newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Salutation query()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Salutation whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Salutation whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Salutation whereKey($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Salutation whereUpdatedAt($value)
  */
 class Salutation extends Model
 {

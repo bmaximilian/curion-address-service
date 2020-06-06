@@ -18,6 +18,6 @@ class AddressRepository {
      * @return Collection<Address>
      */
     public function findAll(): Collection {
-        return Address::all();
+        return Address::with('salutation')->get();
     }
 }
