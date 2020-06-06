@@ -1,5 +1,6 @@
 <?php
 
+use App\Salutation;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,11 +14,20 @@ class CreateSalutationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('salutations', function (Blueprint $table) {
+        Schema::create('salutations', static function (Blueprint $table) {
             $table->id();
             $table->timestamps();
             $table->string('key')->unique();
         });
+
+        // insert default data
+        $salutationKeys = ['mr', 'ms'];
+
+        foreach ($salutationKeys as $salutationKey) {
+            $salutation = new Salutation();
+            $salutation->key = $salutationKey;
+            $salutation->save();
+        }
     }
 
     /**
