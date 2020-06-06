@@ -18,7 +18,7 @@ class GetAddressTest extends TestCase
         $addressCount = Address::all()->count();
         $faker = FakerFactory::create();
 
-        $id = $faker->numberBetween(0, $addressCount - 1);
+        $id = $faker->numberBetween(1, $addressCount);
         $address = Address::findOrFail($id);
 
         $response = $this->get('/api/v1/addresses/'.$address->id);
