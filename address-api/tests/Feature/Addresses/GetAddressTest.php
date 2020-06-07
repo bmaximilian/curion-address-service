@@ -4,10 +4,13 @@ namespace Tests\Feature\Addresses;
 
 use App\Addresses\Database\Models\Address;
 use Faker\Factory as FakerFactory;
+use Tests\CreatesAuthToken;
 use Tests\TestCase;
 
 class GetAddressTest extends TestCase
 {
+    use CreatesAuthToken;
+
     /**
      * Test for successfully loading a address
      *
@@ -20,8 +23,9 @@ class GetAddressTest extends TestCase
 
         $id = $faker->numberBetween(1, $addressCount);
         $address = Address::findOrFail($id);
+        $token = $this->createToken('1');
 
-        $response = $this->get('/api/v1/addresses/'.$address->id);
+        $response = $this->get('/api/v1/addresses/'.$address->id, [ 'Authorization' => "Bearer $token" ]);
 
         $response->assertStatus(200);
         $response->assertJsonStructure([
@@ -59,12 +63,26 @@ class GetAddressTest extends TestCase
     {
         $addressId = Address::all()->count() + 100;
 
-        $response = $this->get('/api/v1/addresses/'.$addressId);
+        $token = $this->createToken('1');
+
+        $response = $this->get('/api/v1/addresses/'.$addressId, [ 'Authorization' => "Bearer $token" ]);
 
         $response->assertStatus(404);
         $response->assertExactJson([
             'status' => 404,
             'message' => "Could not find Address with id $addressId",
+        ]);
+    }
+
+    public function testGetAddressInvalidToken(): void
+    {
+        $response = $this->get('/api/v1/addresses/1');
+
+        $response->assertStatus(403);
+        $response->assertExactJson([
+            'status' => 403,
+            'message' => 'Forbidden Resource',
+            'details' => 'The token could not be parsed from the request',
         ]);
     }
 }
