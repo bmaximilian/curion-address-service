@@ -8,6 +8,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatNativeDateModule } from '@angular/material/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { addressesReducer } from '../../store/reducer/addresses.reducer';
 import { AddressFormDialogComponent } from './address-form-dialog.component';
 
@@ -27,6 +28,7 @@ describe('AddressFormDialogComponent', () => {
                 MatSelectModule,
                 MatDatepickerModule,
                 MatNativeDateModule,
+                ReactiveFormsModule,
             ],
             providers: [
                 { provide: MAT_DIALOG_DATA, useValue: {} },

@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { TranslateService } from '@ngx-translate/core';
+import { FormControl, FormGroup } from '@angular/forms';
 
 export interface DialogData {
     title: string;
@@ -13,6 +13,16 @@ export interface DialogData {
     styleUrls: ['./address-form-dialog.component.scss'],
 })
 export class AddressFormDialogComponent {
+    public addressForm = new FormGroup({
+        salutation: new FormControl(''),
+        firstName: new FormControl(''),
+        lastName: new FormControl(''),
+        birthday: new FormControl(''),
+        address: new FormControl(''),
+        postalCode: new FormControl(''),
+        city: new FormControl(''),
+    });
+
     /**
      * Constructor of dialog component
      *
@@ -28,6 +38,7 @@ export class AddressFormDialogComponent {
      * Click on the submit button
      */
     public handleSubmitClick(): void {
+        console.log(this.addressForm.value);
         this.dialogRef.close(true);
     }
 }

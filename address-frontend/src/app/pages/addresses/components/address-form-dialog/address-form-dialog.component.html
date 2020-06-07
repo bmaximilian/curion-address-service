@@ -1,9 +1,9 @@
 <h2 mat-dialog-title>{{ data.title | translate }}</h2>
 <mat-dialog-content class="mat-typography">
-    <div class="form-wrapper">
+    <form class="form-wrapper" [formGroup]="addressForm">
         <mat-form-field appearance="standard" color="accent">
             <mat-label>Anrede</mat-label>
-            <mat-select>
+            <mat-select formControlName="salutation">
                 <mat-option value="mr">Herr</mat-option>
                 <mat-option value="ms">Frau</mat-option>
             </mat-select>
@@ -11,39 +11,39 @@
 
         <mat-form-field appearance="standard" color="accent">
             <mat-label>Vorname</mat-label>
-            <input matInput placeholder="Vorname">
+            <input matInput placeholder="Vorname" formControlName="firstName">
             <!--<mat-hint>Hint</mat-hint>-->
         </mat-form-field>
 
         <mat-form-field appearance="standard" color="accent">
             <mat-label>Nachname</mat-label>
-            <input matInput placeholder="Nachname">
+            <input matInput placeholder="Nachname" formControlName="lastName">
             <!--<mat-hint>Hint</mat-hint>-->
         </mat-form-field>
         <mat-form-field appearance="standard" color="accent">
             <mat-label>Geburtsdatum</mat-label>
-            <input matInput [matDatepicker]="picker">
+            <input matInput [matDatepicker]="picker" formControlName="birthday">
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
             <!--<mat-hint>Hint</mat-hint>-->
         </mat-form-field>
         <mat-form-field appearance="standard" color="accent">
             <mat-label>Adresse</mat-label>
-            <input matInput placeholder="Adresse" label="street">
+            <input matInput placeholder="Adresse" label="street" formControlName="address">
             <!--<mat-hint>Hint</mat-hint>-->
         </mat-form-field>
         <mat-form-field appearance="standard" color="accent">
             <mat-label>PLZ</mat-label>
-            <input matInput placeholder="PLZ">
+            <input matInput placeholder="PLZ" formControlName="postalCode">
             <!--<mat-hint>Hint</mat-hint>-->
         </mat-form-field>
 
         <mat-form-field appearance="standard" color="accent">
             <mat-label>Stadt</mat-label>
-            <input matInput placeholder="Stadt">
+            <input matInput placeholder="Stadt" formControlName="city">
             <!--<mat-hint>Hint</mat-hint>-->
         </mat-form-field>
-    </div>
+    </form>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
     <button

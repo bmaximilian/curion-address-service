@@ -17,6 +17,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatNativeDateModule } from '@angular/material/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { AddressesPageComponent } from './components/addresses-page/addresses-page.component';
 import { AddressTableComponent } from './components/address-table/address-table.component';
 import { addressesReducer } from './store/reducer/addresses.reducer';
@@ -45,6 +46,7 @@ import { AddressFormDialogComponent } from './components/address-form-dialog/add
         MatSelectModule,
         MatDatepickerModule,
         MatNativeDateModule,
+        ReactiveFormsModule,
     ],
     providers: [AddressesService],
     declarations: [
