@@ -7,7 +7,7 @@ import { MatListModule } from '@angular/material/list';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { TranslateModule } from '@ngx-translate/core';
-import { AppRoutingModule } from '../app-routing.module';
+import { RouterModule } from '@angular/router';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 
 @NgModule({
@@ -19,7 +19,7 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
         MatButtonModule,
         MatListModule,
         MatSidenavModule,
-        AppRoutingModule,
+        RouterModule,
         TranslateModule,
     ],
     declarations: [NavBarComponent],

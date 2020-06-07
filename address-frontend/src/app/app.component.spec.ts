@@ -1,6 +1,8 @@
 import { TestBed, async } from '@angular/core/testing';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -22,6 +24,8 @@ describe('AppComponent', () => {
                     },
                 }),
                 AppUiModule,
+                StoreModule.forRoot({}),
+                EffectsModule.forRoot([]),
             ],
             declarations: [AppComponent],
         }).compileComponents();
