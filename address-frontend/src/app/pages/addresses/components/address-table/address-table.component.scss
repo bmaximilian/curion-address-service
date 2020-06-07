@@ -3,4 +3,8 @@ table {
     max-width: 900px;
     margin: auto;
     background: transparent;
+
+    .action-menu-button {
+        float: right;
+    }
 }

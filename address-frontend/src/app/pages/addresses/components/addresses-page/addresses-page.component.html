@@ -1,4 +1,16 @@
 <div>
-    <app-address-table fxShow.gt-md="true" fxHide.lt-md="true" [addresses]="$addresses | async"></app-address-table>
-    <app-address-list [addresses]="$addresses | async" fxHide.gt-md="true" fxShow.lt-md="true"></app-address-list>
+    <app-address-table
+        fxShow.gt-md="true"
+        fxHide.lt-md="true"
+        [addresses]="$addresses | async"
+        (edit)="editAddress($event)"
+        (delete)="deleteAddress($event)"
+    ></app-address-table>
+    <app-address-list
+        [addresses]="$addresses | async"
+        fxHide.gt-md="true"
+        fxShow.lt-md="true"
+        (edit)="editAddress($event)"
+        (delete)="deleteAddress($event)"
+    ></app-address-list>
 </div>

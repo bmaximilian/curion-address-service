@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { AddressItem } from '../../address.model';
 
 @Component({
@@ -9,4 +9,10 @@ import { AddressItem } from '../../address.model';
 export class AddressListComponent {
     @Input()
     public addresses: AddressItem[];
+
+    @Output()
+    public delete = new EventEmitter<AddressItem>();
+
+    @Output()
+    public edit = new EventEmitter<AddressItem>();
 }

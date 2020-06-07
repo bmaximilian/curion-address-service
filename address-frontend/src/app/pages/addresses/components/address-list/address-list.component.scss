@@ -8,10 +8,21 @@
 
     .mat-card {
         width: 100%;
+        display: flex;
 
-        .mat-card-title {
-            font-weight: 500;
-            font-size: 18px;
+        .card-content-container {
+            flex: 1;
+
+            .mat-card-title {
+                font-weight: 500;
+                font-size: 18px;
+            }
+        }
+
+        .card-action-container {
+            flex: 0;
+            display: inline-flex;
+            align-items: center;
         }
     }
 }
