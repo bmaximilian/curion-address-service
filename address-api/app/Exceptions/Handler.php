@@ -2,10 +2,13 @@
 
 namespace App\Exceptions;
 
+use App\Http\Exceptions\ForbiddenException;
 use App\Http\Exceptions\NotFoundException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Symfony\Component\HttpFoundation\Response;
 use Throwable;
+use Tymon\JWTAuth\Exceptions\JWTException;
 
 class Handler extends ExceptionHandler
 {
@@ -46,14 +49,17 @@ class Handler extends ExceptionHandler
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Throwable  $exception
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      *
      * @throws \Throwable
      */
-    public function render($request, Throwable $exception)
+    public function render($request, Throwable $exception): Response
     {
         if ($exception instanceof ModelNotFoundException) {
             return response()->json((new NotFoundException($exception))->toArray(), 404);
+        }
+        if ($exception instanceof JWTException) {
+            return response()->json((new ForbiddenException($exception))->toArray(), 403);
         }
 
         return parent::render($request, $exception);
