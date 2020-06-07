@@ -1,21 +1,17 @@
-.container {
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto;
+.mat-toolbar {
+    position: fixed;
+    z-index: 1;
+    height: 52px;
+    font-size: 22px
 }
-@media (min-width: 768px) {
-    .container {
-        width: 750px;
-    }
+
+.page-content {
+    padding-top: 92px;
 }
-@media (min-width: 992px) {
-    .container {
-        width: 970px;
-    }
-}
-@media (min-width: 1200px) {
-    .container {
-        width: 1170px;
-    }
+
+.add-button-container {
+    position: fixed;
+    z-index: 10;
+    right: 10%;
+    margin-top: 20px;
 }

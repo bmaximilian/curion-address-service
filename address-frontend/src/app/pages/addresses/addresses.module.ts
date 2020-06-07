@@ -11,12 +11,19 @@ import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatNativeDateModule } from '@angular/material/core';
 import { AddressesPageComponent } from './components/addresses-page/addresses-page.component';
 import { AddressTableComponent } from './components/address-table/address-table.component';
 import { addressesReducer } from './store/reducer/addresses.reducer';
 import { AddressesService } from './addresses.service';
 import { AddressEffects } from './store/effects/address.effects';
 import { AddressListComponent } from './components/address-list/address-list.component';
+import { AddressFormDialogComponent } from './components/address-form-dialog/address-form-dialog.component';
 
 @NgModule({
     imports: [
@@ -32,8 +39,20 @@ import { AddressListComponent } from './components/address-list/address-list.com
         MatMenuModule,
         MatIconModule,
         MatButtonModule,
+        MatDialogModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatSelectModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
     ],
     providers: [AddressesService],
-    declarations: [AddressesPageComponent, AddressTableComponent, AddressListComponent],
+    declarations: [
+        AddressesPageComponent,
+        AddressTableComponent,
+        AddressListComponent,
+        AddressFormDialogComponent,
+        AddressFormDialogComponent,
+    ],
 })
 export class AddressesModule {}

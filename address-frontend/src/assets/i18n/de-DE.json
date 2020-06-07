@@ -29,6 +29,10 @@
             "actions": {
                 "edit": "Bearbeiten",
                 "delete": "Löschen"
+            },
+            "addDialog": {
+                "title": "Neue Adresse hinzufügen",
+                "submit": "Hinzufügen"
             }
         }
     }
