@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { MatTableDataSource } from '@angular/material/table';
-import { loadAddressesStart } from '../store/actions/address-list.actions';
-import { AddressItem } from '../address.model';
-import { State } from '../store/reducer/addresses.reducer';
+import { loadAddressesStart } from '../../store/actions/address-list.actions';
+import { AddressItem } from '../../address.model';
+import { State } from '../../store/reducer/addresses.reducer';
 
 @Component({
     selector: 'app-addresses-page',

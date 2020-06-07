@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AddressesPageComponent } from './pages/addresses/addresses-page/addresses-page.component';
+import { AddressesPageComponent } from './pages/addresses/components/addresses-page/addresses-page.component';
 import { OccasionsPageComponent } from './pages/occasions/occasions-page/occasions-page.component';
 import { AbsencePageComponent } from './pages/absence/absence-page/absence-page.component';
 import { AbsenceModule } from './pages/absence/absence.module';

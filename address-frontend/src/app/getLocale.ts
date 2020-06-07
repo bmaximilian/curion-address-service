@@ -4,5 +4,11 @@
  * @returns - The locale string
  */
 export function getLocale(): string {
-    return navigator.languages && navigator.languages.length > 0 ? navigator.languages[0] : navigator.language;
+    if (navigator?.languages?.length > 0) {
+        return navigator.languages[0];
+    }
+
+    if (navigator?.language) return navigator.language;
+
+    return 'de-DE';
 }

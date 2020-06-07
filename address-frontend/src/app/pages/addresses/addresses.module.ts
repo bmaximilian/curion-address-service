@@ -4,10 +4,11 @@ import { EffectsModule } from '@ngrx/effects';
 import { MatTableModule } from '@angular/material/table';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
-import { AddressesPageComponent } from './addresses-page/addresses-page.component';
+import { AddressesPageComponent } from './components/addresses-page/addresses-page.component';
 import { addressesReducer } from './store/reducer/addresses.reducer';
 import { AddressesService } from './addresses.service';
 import { AddressEffects } from './store/effects/address.effects';
+import { AddressTableComponent } from './components/address-table/address-table.component';
 
 @NgModule({
     imports: [
@@ -18,6 +19,6 @@ import { AddressEffects } from './store/effects/address.effects';
         TranslateModule,
     ],
     providers: [AddressesService],
-    declarations: [AddressesPageComponent],
+    declarations: [AddressesPageComponent, AddressTableComponent],
 })
 export class AddressesModule {}
