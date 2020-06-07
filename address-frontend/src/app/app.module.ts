@@ -4,6 +4,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { environment } from '../environments/environment';
 import { AppUiModule } from './ui-components/app-ui.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -34,6 +38,9 @@ export function HttpLoaderFactory(http: HttpClient): TranslateLoader {
             },
         }),
         AppUiModule,
+        StoreModule.forRoot({}),
+        EffectsModule.forRoot([]),
+        !environment.production && StoreDevtoolsModule.instrument({ maxAge: 25 }),
     ],
     providers: [],
     bootstrap: [AppComponent],
