@@ -1,0 +1,47 @@
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav
+        #drawer
+        class="sidenav"
+        fixedInViewport
+        role="dialog"
+        mode="over"
+        fxShow="true"
+    >
+        <mat-nav-list>
+            <a
+                class="app-nav-drawer__item"
+                mat-list-item
+                *ngFor="let menuItem of menuItems"
+                [routerLink]="menuItem.isRouterLink ? menuItem.href : null"
+                [href]="!menuItem.isRouterLink ? menuItem.href : null"
+                routerLinkActive="active"
+            >{{ menuItem.text | translate }}</a>
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <mat-toolbar color="primary">
+            <button
+                type="button"
+                aria-label="Toggle sidenav"
+                mat-icon-button
+                (click)="drawer.toggle()"
+                [fxShow]="isSmallDevice"
+            >
+                <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+            </button>
+            <a mat-button routerLink="/" id="drawerTitle"><span>{{ drawerTitle | translate }}</span></a>
+            <span class="app-nav-bar__spacer"></span>
+            <ng-container *ngIf="!isSmallDevice">
+                <a
+                    class="app-nav-bar__item"
+                    mat-button
+                    *ngFor="let menuItem of menuItems"
+                    [routerLink]="menuItem.isRouterLink ? menuItem.href : null"
+                    [href]="!menuItem.isRouterLink ? menuItem.href : null"
+                    routerLinkActive="active"
+                >{{ menuItem.text | translate }}</a>
+            </ng-container>
+        </mat-toolbar>
+        <ng-content></ng-content>
+    </mat-sidenav-content>
+</mat-sidenav-container>
