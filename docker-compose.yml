@@ -30,6 +30,7 @@ services:
     environment:
       APP_ENV: development
       PHP_XDEBUG_ENABLED: 1
+      JWT_SECRET: mySuperJWTSectet1
       DB_HOST: mssql
       DB_PORT: 1433
       DB_DATABASE: curion_address_api
