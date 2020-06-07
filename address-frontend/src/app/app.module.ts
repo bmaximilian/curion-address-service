@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
@@ -11,6 +11,8 @@ import { environment } from '../environments/environment';
 import { AppUiModule } from './ui-components/app-ui.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { BaseUrlInterceptor } from './interceptors/base-url.interceptor';
+import { ApiTokenInterceptor } from './interceptors/api-token.interceptor';
 
 /**
  * required for AOT compilation
@@ -42,7 +44,18 @@ export function HttpLoaderFactory(http: HttpClient): TranslateLoader {
         EffectsModule.forRoot([]),
         !environment.production && StoreDevtoolsModule.instrument({ maxAge: 25 }),
     ],
-    providers: [],
+    providers: [
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: BaseUrlInterceptor,
+            multi: true,
+        },
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: ApiTokenInterceptor,
+            multi: true,
+        },
+    ],
     bootstrap: [AppComponent],
 })
 export class AppModule {}

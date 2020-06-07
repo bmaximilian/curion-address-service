@@ -4,6 +4,7 @@
 
 export const environment = {
     production: false,
+    apiBaseUrl: '//dinghy/api/v1',
     apiToken:
         // eslint-disable-next-line max-len
         'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJMYXJhdmVsIiwiaWF0IjoxNTkxNDg2ODM1LCJuYmYiOjE1OTE0ODY4MzUsImp0aSI6IjVlZGMyOTczYWYxYjciLCJzdWIiOiIxIn0.Q01ti1mF6nf6MG0s8d9_bIe8rhc8yPcxS7GU46TehLE',
