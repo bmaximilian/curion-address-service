@@ -1,18 +1,28 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Observable } from 'rxjs';
-import { map, shareReplay } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
+
+export interface MenuItem {
+    href: string;
+    isRouterLink: boolean;
+    text: string;
+}
 
 @Component({
     selector: 'app-nav-bar',
     templateUrl: './nav-bar.component.html',
     styleUrls: ['./nav-bar.component.scss'],
 })
-export class NavBarComponent {
-    public isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
-        map((result) => result.matches),
-        shareReplay(),
-    );
+export class NavBarComponent implements OnInit {
+    public isCollapsed = true;
+
+    public isDrawerVisible = true;
+
+    @Input()
+    public drawerTitle = '';
+
+    @Input()
+    public menuItems: MenuItem[] = [];
 
     /**
      * Constructor of navbar component
@@ -20,4 +30,20 @@ export class NavBarComponent {
      * @param breakpointObserver - Observes window breakpoints
      */
     constructor(private breakpointObserver: BreakpointObserver) {}
+
+    /**
+     *
+     */
+    public ngOnInit(): void {
+        this.breakpointObserver
+            .observe(Breakpoints.Handset)
+            .pipe(map((result) => result.matches))
+            .subscribe((isHandset) => {
+                if (this.isDrawerVisible && !isHandset) {
+                    this.isCollapsed = true;
+                }
+
+                this.isDrawerVisible = isHandset;
+            });
+    }
 }

@@ -5,10 +5,19 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { AppRoutingModule } from '../app-routing.module';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 
 @NgModule({
-    imports: [CommonModule, MatToolbarModule, MatIconModule, MatButtonModule, MatListModule, MatSidenavModule],
+    imports: [
+        CommonModule,
+        MatToolbarModule,
+        MatIconModule,
+        MatButtonModule,
+        MatListModule,
+        MatSidenavModule,
+        AppRoutingModule,
+    ],
     declarations: [NavBarComponent],
     exports: [NavBarComponent],
 })
