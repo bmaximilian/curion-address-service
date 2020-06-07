@@ -2,7 +2,7 @@ import { createReducer, on } from '@ngrx/store';
 import { loadAddressesStart, loadAddressesSucceeded } from '../actions/address-list.actions';
 import { AddressItem } from '../../address.model';
 
-interface State {
+export interface State {
     isLoading: boolean;
     items: AddressItem[];
 }
