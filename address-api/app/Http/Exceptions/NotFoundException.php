@@ -14,8 +14,6 @@ use Illuminate\Http\Resources\Json\JsonResource;
 /**
  * Class NotFoundException
  *
- * @property string $message
- *
  * @package App\Http\Exceptions
  */
 class NotFoundException {
