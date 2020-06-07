@@ -1,7 +1,10 @@
 import { TestBed, async } from '@angular/core/testing';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { LOCALE_ID } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AppUiModule } from './ui-components/app-ui.module';
@@ -22,6 +25,14 @@ describe('AppComponent', () => {
                     },
                 }),
                 AppUiModule,
+                StoreModule.forRoot({}),
+                EffectsModule.forRoot([]),
+            ],
+            providers: [
+                {
+                    provide: LOCALE_ID,
+                    useValue: 'de-DE',
+                },
             ],
             declarations: [AppComponent],
         }).compileComponents();

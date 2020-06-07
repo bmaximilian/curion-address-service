@@ -1,0 +1,17 @@
+.mat-list-item {
+    height: auto;
+    margin-bottom: 10px;
+
+    .mat-list-item-content {
+        display: block;
+    }
+
+    .mat-card {
+        width: 100%;
+
+        .mat-card-title {
+            font-weight: 500;
+            font-size: 18px;
+        }
+    }
+}

@@ -1,0 +1,9 @@
+<mat-list>
+    <mat-list-item *ngFor="let address of addresses">
+        <mat-card>
+            <mat-card-title> {{ 'general.salutations.'+address.salutation | translate }} {{ address.firstName }} {{ address.lastName }} </mat-card-title>
+            <mat-card-subtitle>{{ 'general.prefix.birth' | translate }} {{address.birthday | date:'shortDate'}} </mat-card-subtitle>
+            <mat-card-content> {{address.address}}, {{address.postalCode}} {{address.city}} </mat-card-content>
+        </mat-card>
+    </mat-list-item>
+</mat-list>

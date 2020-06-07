@@ -1,0 +1,31 @@
+{
+    "general": {
+        "title": "Address Service",
+        "navbar": {
+            "links": {
+                "addresses": "Adressen",
+                "occasions": "Anlässe",
+                "absence": "Absenzkontrolle"
+            }
+        },
+        "salutations": {
+            "mr": "Herr",
+            "ms": "Frau"
+        },
+        "prefix": {
+            "birth": "geb."
+        }
+    },
+    "pages": {
+        "addresses": {
+            "title": "Adressen",
+            "table": {
+                "name": "Name",
+                "birthday": "Geburtsdatum",
+                "city": "Stadt",
+                "address": "Adresse",
+                "postalCode": "PLZ"
+            }
+        }
+    }
+}

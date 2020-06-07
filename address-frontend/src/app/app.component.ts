@@ -1,7 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, Inject, LOCALE_ID } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import defaultLanguage from '../assets/i18n/de_DE.json';
+import localeDe from '@angular/common/locales/de';
+import { registerLocaleData } from '@angular/common';
+import defaultLanguage from '../assets/i18n/de-DE.json';
 import { MenuItem } from './ui-components/nav-bar/nav-bar.component';
+
+registerLocaleData(localeDe);
 
 @Component({
     selector: 'app-root',
@@ -21,9 +25,10 @@ export class AppComponent {
      * Constructor of AppComponent
      *
      * @param translate - Translate service instance
+     * @param locale - Current locale
      */
-    constructor(private translate: TranslateService) {
-        translate.setTranslation('de_DE', defaultLanguage);
-        translate.setDefaultLang('de_DE');
+    constructor(private translate: TranslateService, @Inject(LOCALE_ID) locale: string) {
+        translate.setTranslation('de-DE', defaultLanguage);
+        translate.setDefaultLang(locale);
     }
 }

@@ -9,7 +9,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { TranslateModule } from '@ngx-translate/core';
 import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { AppRoutingModule } from '../../app-routing.module';
+import { RouterTestingModule } from '@angular/router/testing';
 import { NavBarComponent } from './nav-bar.component';
 
 describe('NavBarComponent', () => {
@@ -29,7 +29,7 @@ describe('NavBarComponent', () => {
                 MatButtonModule,
                 MatListModule,
                 MatSidenavModule,
-                AppRoutingModule,
+                RouterTestingModule,
                 TranslateModule.forRoot(),
             ],
         }).compileComponents();
