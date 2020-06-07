@@ -11,6 +11,9 @@
         "salutations": {
             "mr": "Herr",
             "ms": "Frau"
+        },
+        "prefix": {
+            "birth": "geb."
         }
     },
     "pages": {

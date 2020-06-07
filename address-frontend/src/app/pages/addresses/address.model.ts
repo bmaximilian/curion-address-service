@@ -1,4 +1,10 @@
 export interface AddressItem {
-    id: string;
+    id: number;
+    salutation: string;
     firstName: string;
+    lastName: string;
+    birthday: Date;
+    postalCode: string;
+    city: string;
+    address: string;
 }

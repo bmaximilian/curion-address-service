@@ -26,6 +26,8 @@ export function HttpLoaderFactory(http: HttpClient): TranslateLoader {
     return new TranslateHttpLoader(http);
 }
 
+const dev = environment.production ? [] : [StoreDevtoolsModule.instrument({ maxAge: 25 })];
+
 @NgModule({
     declarations: [AppComponent],
     imports: [
@@ -43,7 +45,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateLoader {
         AppUiModule,
         StoreModule.forRoot({}),
         EffectsModule.forRoot([]),
-        !environment.production && StoreDevtoolsModule.instrument({ maxAge: 25 }),
+        ...dev,
     ],
     providers: [
         {
