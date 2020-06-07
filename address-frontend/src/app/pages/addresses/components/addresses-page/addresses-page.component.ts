@@ -12,6 +12,8 @@ import { AddressItem } from '../../address.model';
 export class AddressesPageComponent implements OnInit {
     public $addresses;
 
+    public functionMenuEnabled: boolean;
+
     /**
      * Constructor of Addresses page
      *
@@ -25,6 +27,7 @@ export class AddressesPageComponent implements OnInit {
      * Executed when the component is initialized
      */
     public ngOnInit(): void {
+        this.functionMenuEnabled = false;
         this.store.dispatch(loadAddressesStart());
     }
 

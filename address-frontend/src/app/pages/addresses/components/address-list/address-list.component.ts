@@ -10,6 +10,9 @@ export class AddressListComponent {
     @Input()
     public addresses: AddressItem[];
 
+    @Input()
+    public showFunctionMenu = true;
+
     @Output()
     public delete = new EventEmitter<AddressItem>();
 

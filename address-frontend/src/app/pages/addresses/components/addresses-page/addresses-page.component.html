@@ -3,11 +3,13 @@
         fxShow.gt-md="true"
         fxHide.lt-md="true"
         [addresses]="$addresses | async"
+        [showFunctionMenu]="functionMenuEnabled"
         (edit)="editAddress($event)"
         (delete)="deleteAddress($event)"
     ></app-address-table>
     <app-address-list
         [addresses]="$addresses | async"
+        [showFunctionMenu]="functionMenuEnabled"
         fxHide.gt-md="true"
         fxShow.lt-md="true"
         (edit)="editAddress($event)"

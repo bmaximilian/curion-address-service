@@ -8,9 +8,12 @@ import { AddressItem } from '../../address.model';
     styleUrls: ['./address-table.component.scss'],
 })
 export class AddressTableComponent implements OnInit {
-    public displayedColumns: string[] = ['name', 'birthday', 'address', 'city', 'postcode', 'actions'];
+    public displayedColumns: string[] = ['name', 'birthday', 'address', 'city', 'postcode'];
 
     public dataSource = new MatTableDataSource<AddressItem>();
+
+    @Input()
+    public showFunctionMenu = true;
 
     @Output()
     public delete = new EventEmitter<AddressItem>();
@@ -32,6 +35,8 @@ export class AddressTableComponent implements OnInit {
      * Executed in initialization
      */
     public ngOnInit(): void {
-        this.dataSource = new MatTableDataSource<AddressItem>(this.addresses);
+        if (this.showFunctionMenu) {
+            this.displayedColumns = this.displayedColumns.concat('actions');
+        }
     }
 }
