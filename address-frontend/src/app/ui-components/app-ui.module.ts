@@ -5,6 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { TranslateModule } from '@ngx-translate/core';
 import { AppRoutingModule } from '../app-routing.module';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 
@@ -17,6 +18,7 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
         MatListModule,
         MatSidenavModule,
         AppRoutingModule,
+        TranslateModule,
     ],
     declarations: [NavBarComponent],
     exports: [NavBarComponent],

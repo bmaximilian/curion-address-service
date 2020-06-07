@@ -14,7 +14,7 @@
                 [routerLink]="menuItem.isRouterLink ? menuItem.href : null"
                 [href]="!menuItem.isRouterLink ? menuItem.href : null"
                 routerLinkActive="active"
-            >{{ menuItem.text }}</a>
+            >{{ menuItem.text | translate }}</a>
         </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content>
@@ -28,14 +28,16 @@
             >
                 <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
             </button>
-            <span>{{ drawerTitle }}</span>
-            <ng-container *ngIf="!isDrawerVisible">
+            <a mat-button routerLink="/"><span>{{ drawerTitle | translate }}</span></a>
+            <span class="app-nav-bar__spacer"></span>
+            <ng-container *ngIf="!isSmallDevice">
                 <a
+                    mat-button
                     *ngFor="let menuItem of menuItems"
                     [routerLink]="menuItem.isRouterLink ? menuItem.href : null"
                     [href]="!menuItem.isRouterLink ? menuItem.href : null"
                     routerLinkActive="active"
-                >{{ menuItem.text }}</a>
+                >{{ menuItem.text | translate }}</a>
             </ng-container>
         </mat-toolbar>
         <ng-content></ng-content>

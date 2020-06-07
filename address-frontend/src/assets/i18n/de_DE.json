@@ -1,0 +1,12 @@
+{
+    "general": {
+        "title": "Address Service",
+        "navbar": {
+            "links": {
+                "addresses": "Adressen",
+                "occasions": "Anlässe",
+                "absence": "Absenzkontrolle"
+            }
+        }
+    }
+}
