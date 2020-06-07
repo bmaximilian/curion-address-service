@@ -38,7 +38,6 @@ export class AddressFormDialogComponent {
      * Click on the submit button
      */
     public handleSubmitClick(): void {
-        console.log(this.addressForm.value);
         this.dialogRef.close(true);
     }
 }
