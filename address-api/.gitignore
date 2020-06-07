@@ -3,6 +3,7 @@
 /public/storage
 /public/tests
 /storage/*.key
+/storage/api-docs/
 /vendor
 .env
 .env.backup
