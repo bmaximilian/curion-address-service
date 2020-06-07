@@ -1,9 +1,20 @@
 <mat-list>
     <mat-list-item *ngFor="let address of addresses">
         <mat-card>
-            <mat-card-title> {{ 'general.salutations.'+address.salutation | translate }} {{ address.firstName }} {{ address.lastName }} </mat-card-title>
-            <mat-card-subtitle>{{ 'general.prefix.birth' | translate }} {{address.birthday | date:'shortDate'}} </mat-card-subtitle>
-            <mat-card-content> {{address.address}}, {{address.postalCode}} {{address.city}} </mat-card-content>
+            <div class="card-content-container">
+                <mat-card-title> {{ 'general.salutations.'+address.salutation | translate }} {{ address.firstName }} {{ address.lastName }} </mat-card-title>
+                <mat-card-subtitle>{{ 'general.prefix.birth' | translate }} {{address.birthday | date:'shortDate'}} </mat-card-subtitle>
+                <mat-card-content> {{address.address}}, {{address.postalCode}} {{address.city}} </mat-card-content>
+            </div>
+            <div class="card-action-container" *ngIf="showFunctionMenu">
+                <button class="action-menu-button" mat-icon-button [matMenuTriggerFor]="actionMenu">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #actionMenu="matMenu">
+                    <button mat-menu-item (click)="edit.emit(address)">{{ 'pages.addresses.actions.edit' | translate }}</button>
+                    <button mat-menu-item (click)="delete.emit(address)">{{ 'pages.addresses.actions.delete' | translate }}</button>
+                </mat-menu>
+            </div>
         </mat-card>
     </mat-list-item>
 </mat-list>

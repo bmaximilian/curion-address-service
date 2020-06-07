@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { AddressItem } from '../../address.model';
 
@@ -11,6 +11,15 @@ export class AddressTableComponent implements OnInit {
     public displayedColumns: string[] = ['name', 'birthday', 'address', 'city', 'postcode'];
 
     public dataSource = new MatTableDataSource<AddressItem>();
+
+    @Input()
+    public showFunctionMenu = true;
+
+    @Output()
+    public delete = new EventEmitter<AddressItem>();
+
+    @Output()
+    public edit = new EventEmitter<AddressItem>();
 
     /**
      * Sets addresses to datasource
@@ -26,6 +35,8 @@ export class AddressTableComponent implements OnInit {
      * Executed in initialization
      */
     public ngOnInit(): void {
-        this.dataSource = new MatTableDataSource<AddressItem>(this.addresses);
+        if (this.showFunctionMenu) {
+            this.displayedColumns = this.displayedColumns.concat('actions');
+        }
     }
 }

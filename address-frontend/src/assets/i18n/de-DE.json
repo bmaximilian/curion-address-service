@@ -25,6 +25,10 @@
                 "city": "Stadt",
                 "address": "Adresse",
                 "postalCode": "PLZ"
+            },
+            "actions": {
+                "edit": "Bearbeiten",
+                "delete": "Löschen"
             }
         }
     }

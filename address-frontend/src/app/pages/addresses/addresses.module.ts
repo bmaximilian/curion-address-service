@@ -8,6 +8,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { TranslateModule } from '@ngx-translate/core';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 import { AddressesPageComponent } from './components/addresses-page/addresses-page.component';
 import { AddressTableComponent } from './components/address-table/address-table.component';
 import { addressesReducer } from './store/reducer/addresses.reducer';
@@ -26,6 +29,9 @@ import { AddressListComponent } from './components/address-list/address-list.com
         FlexLayoutModule,
         MatListModule,
         MatCardModule,
+        MatMenuModule,
+        MatIconModule,
+        MatButtonModule,
     ],
     providers: [AddressesService],
     declarations: [AddressesPageComponent, AddressTableComponent, AddressListComponent],
