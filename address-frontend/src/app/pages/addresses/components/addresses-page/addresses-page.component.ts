@@ -1,19 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
-import { MatTableDataSource } from '@angular/material/table';
-import { loadAddressesStart } from '../../store/actions/address-list.actions';
-import { AddressItem } from '../../address.model';
 import { State } from '../../store/reducer/addresses.reducer';
+import { loadAddressesStart } from '../../store/actions/address-list.actions';
 
 @Component({
     selector: 'app-addresses-page',
     templateUrl: './addresses-page.component.html',
     styleUrls: ['./addresses-page.component.scss'],
 })
-export class AddressesPageComponent {
-    public displayedColumns: string[] = ['name', 'birthday', 'address', 'city', 'postcode'];
-
-    public dataSource = new MatTableDataSource<AddressItem>([]);
+export class AddressesPageComponent implements OnInit {
+    public $addresses;
 
     /**
      * Constructor of Addresses page
@@ -21,10 +17,13 @@ export class AddressesPageComponent {
      * @param store - The store service
      */
     constructor(private store: Store<{ addresses: State }>) {
-        store.dispatch(loadAddressesStart());
+        this.$addresses = store.pipe(select((state) => state.addresses.items));
+    }
 
-        store.pipe(select((state) => state.addresses.items)).subscribe((items) => {
-            this.dataSource.data = items;
-        });
+    /**
+     * Executed when the component is initialized
+     */
+    public ngOnInit(): void {
+        this.store.dispatch(loadAddressesStart());
     }
 }

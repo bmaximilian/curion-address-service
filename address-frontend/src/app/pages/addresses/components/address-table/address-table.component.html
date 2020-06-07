@@ -1,0 +1,34 @@
+<table mat-table [dataSource]="dataSource">
+    <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> {{ 'pages.addresses.table.name' | translate }} </th>
+        <td mat-cell *matCellDef="let user">
+            {{ 'general.salutations.'+user.salutation | translate }} {{ user.firstName }} {{ user.lastName }}
+        </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="birthday">
+        <th mat-header-cell *matHeaderCellDef> {{ 'pages.addresses.table.birthday' | translate }} </th>
+        <td mat-cell *matCellDef="let user">
+            {{user.birthday | date:'shortDate'}}
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="address">
+        <th mat-header-cell *matHeaderCellDef> {{ 'pages.addresses.table.address' | translate }} </th>
+        <td mat-cell *matCellDef="let user"> {{user.address}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="postcode">
+        <th mat-header-cell *matHeaderCellDef> {{ 'pages.addresses.table.postalCode' | translate }} </th>
+        <td mat-cell *matCellDef="let user"> {{user.postalCode}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="city">
+        <th mat-header-cell *matHeaderCellDef> {{ 'pages.addresses.table.city' | translate }} </th>
+        <td mat-cell *matCellDef="let user"> {{user.city}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let myRowData; columns: displayedColumns"></tr>
+</table>

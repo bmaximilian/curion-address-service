@@ -8,12 +8,12 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { environment } from '../environments/environment';
+import { getLocale } from '../lib/util/getLocale';
 import { AppUiModule } from './ui-components/app-ui.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BaseUrlInterceptor } from './interceptors/base-url.interceptor';
 import { ApiTokenInterceptor } from './interceptors/api-token.interceptor';
-import { getLocale } from './getLocale';
 
 /**
  * required for AOT compilation

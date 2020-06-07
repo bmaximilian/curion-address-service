@@ -15,6 +15,7 @@
     },
     "pages": {
         "addresses": {
+            "title": "Adressen",
             "table": {
                 "name": "Name",
                 "birthday": "Geburtsdatum",
