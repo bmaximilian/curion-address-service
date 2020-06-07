@@ -9,6 +9,7 @@
     >
         <mat-nav-list>
             <a
+                class="app-nav-drawer__item"
                 mat-list-item
                 *ngFor="let menuItem of menuItems"
                 [routerLink]="menuItem.isRouterLink ? menuItem.href : null"
@@ -32,6 +33,7 @@
             <span class="app-nav-bar__spacer"></span>
             <ng-container *ngIf="!isSmallDevice">
                 <a
+                    class="app-nav-bar__item"
                     mat-button
                     *ngFor="let menuItem of menuItems"
                     [routerLink]="menuItem.isRouterLink ? menuItem.href : null"
