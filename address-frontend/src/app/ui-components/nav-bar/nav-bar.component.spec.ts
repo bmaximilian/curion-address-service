@@ -6,6 +6,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { TranslateModule } from '@ngx-translate/core';
+import { CommonModule } from '@angular/common';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { AppRoutingModule } from '../../app-routing.module';
 import { NavBarComponent } from './nav-bar.component';
 
 describe('NavBarComponent', () => {
@@ -18,11 +22,15 @@ describe('NavBarComponent', () => {
             imports: [
                 NoopAnimationsModule,
                 LayoutModule,
-                MatButtonModule,
+                CommonModule,
+                FlexLayoutModule,
+                MatToolbarModule,
                 MatIconModule,
+                MatButtonModule,
                 MatListModule,
                 MatSidenavModule,
-                MatToolbarModule,
+                AppRoutingModule,
+                TranslateModule.forRoot(),
             ],
         }).compileComponents();
     }));
