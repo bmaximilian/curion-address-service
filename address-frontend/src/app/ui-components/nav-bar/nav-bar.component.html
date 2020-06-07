@@ -5,7 +5,7 @@
         fixedInViewport
         role="dialog"
         mode="over"
-        [opened]="isDrawerVisible && !isCollapsed"
+        fxShow="true"
     >
         <mat-nav-list>
             <a
@@ -24,7 +24,7 @@
                 aria-label="Toggle sidenav"
                 mat-icon-button
                 (click)="drawer.toggle()"
-                *ngIf="isDrawerVisible"
+                [fxShow]="isSmallDevice"
             >
                 <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
             </button>
