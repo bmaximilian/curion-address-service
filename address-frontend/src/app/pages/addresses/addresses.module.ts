@@ -25,11 +25,13 @@ import { AddressesService } from './addresses.service';
 import { AddressEffects } from './store/effects/address.effects';
 import { AddressListComponent } from './components/address-list/address-list.component';
 import { AddressFormDialogComponent } from './components/address-form-dialog/address-form-dialog.component';
+import { SalutationsService } from './salutations.service';
+import { SalutationEffects } from './store/effects/salutation.effects';
 
 @NgModule({
     imports: [
         StoreModule.forFeature('addresses', addressesReducer),
-        EffectsModule.forFeature([AddressEffects]),
+        EffectsModule.forFeature([AddressEffects, SalutationEffects]),
         MatTableModule,
         CommonModule,
         TranslateModule,
@@ -48,7 +50,7 @@ import { AddressFormDialogComponent } from './components/address-form-dialog/add
         MatNativeDateModule,
         ReactiveFormsModule,
     ],
-    providers: [AddressesService],
+    providers: [AddressesService, SalutationsService],
     declarations: [
         AddressesPageComponent,
         AddressTableComponent,

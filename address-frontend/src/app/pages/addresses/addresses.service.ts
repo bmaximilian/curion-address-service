@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { CollectionApiResponse } from '../../../lib/util/api-response';
 import { AddressItem } from './address.model';
 
-interface AddressListResponse {
-    data: AddressItem[];
-}
+type AddressListResponse = CollectionApiResponse<AddressItem>;
 
 @Injectable()
 export class AddressesService {

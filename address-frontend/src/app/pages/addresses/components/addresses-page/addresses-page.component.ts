@@ -5,6 +5,7 @@ import { State } from '../../store/reducer/addresses.reducer';
 import { loadAddressesStart } from '../../store/actions/address-list.actions';
 import { AddressItem } from '../../address.model';
 import { AddressFormDialogComponent } from '../address-form-dialog/address-form-dialog.component';
+import { loadSalutationsStart } from '../../store/actions/salutation.actions';
 
 @Component({
     selector: 'app-addresses-page',
@@ -32,6 +33,7 @@ export class AddressesPageComponent implements OnInit {
     public ngOnInit(): void {
         this.functionMenuEnabled = false;
         this.store.dispatch(loadAddressesStart());
+        this.store.dispatch(loadSalutationsStart());
     }
 
     /**
