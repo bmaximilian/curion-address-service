@@ -30,6 +30,15 @@
                 "edit": "Bearbeiten",
                 "delete": "Löschen"
             },
+            "formDialog":{
+                "salutation": "Anrede",
+                "firstName": "Vorname",
+                "lastName": "Nachname",
+                "birthday": "Geburtsdatum",
+                "address": "Adresse",
+                "postalCode": "PLZ",
+                "city": "Stadt"
+            },
             "addDialog": {
                 "title": "Neue Adresse hinzufügen",
                 "submit": "Hinzufügen"
