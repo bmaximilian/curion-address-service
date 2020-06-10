@@ -4,8 +4,9 @@
         <mat-form-field appearance="standard" color="accent">
             <mat-label>Anrede</mat-label>
             <mat-select formControlName="salutation">
-                <mat-option value="mr">Herr</mat-option>
-                <mat-option value="ms">Frau</mat-option>
+                <mat-option *ngFor="let salutation of ($salutations | async)" [value]="salutation.key">
+                    {{ 'general.salutations.' + salutation.key | translate }}
+                </mat-option>
             </mat-select>
         </mat-form-field>
 
