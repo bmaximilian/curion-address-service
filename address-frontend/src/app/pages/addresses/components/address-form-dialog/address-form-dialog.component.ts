@@ -5,6 +5,7 @@ import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { SalutationItem } from '../../salutation.model';
 import { State } from '../../store/reducer/addresses.reducer';
+import { addAddressStart } from '../../store/actions/address-add.actions';
 
 export interface DialogData {
     title: string;
@@ -48,6 +49,9 @@ export class AddressFormDialogComponent {
      * Click on the submit button
      */
     public handleSubmitClick(): void {
+        const item = this.addressForm.value;
+
+        this.store.dispatch(addAddressStart({ item }));
         this.dialogRef.close(true);
     }
 }

@@ -23,4 +23,14 @@ export class AddressesService {
     public getAll(): Observable<AddressListResponse> {
         return this.http.get('/addresses') as Observable<AddressListResponse>;
     }
+
+    /**
+     * Adds an address to the backend
+     *
+     * @param address - The address to add
+     * @returns - An observable that emits the added address
+     */
+    public add(address: AddressItem): Observable<AddressItem> {
+        return this.http.post('/addresses', address) as Observable<AddressItem>;
+    }
 }

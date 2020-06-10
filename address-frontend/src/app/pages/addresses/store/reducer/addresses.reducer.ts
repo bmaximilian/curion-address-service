@@ -3,9 +3,11 @@ import { loadAddressesStart, loadAddressesSucceeded } from '../actions/address-l
 import { loadSalutationsSucceeded } from '../actions/salutation.actions';
 import { AddressItem } from '../../address.model';
 import { SalutationItem } from '../../salutation.model';
+import { addAddressFailed, addAddressStart, addAddressSucceeded } from '../actions/address-add.actions';
 
 export interface State {
     isLoading: boolean;
+    isAddingAddress: boolean;
     items: AddressItem[];
     salutations: {
         items: SalutationItem[];
@@ -14,6 +16,7 @@ export interface State {
 
 export const initialState: State = {
     isLoading: false,
+    isAddingAddress: false,
     items: [],
     salutations: {
         items: [],
@@ -34,6 +37,9 @@ const ons = [
             items: action.salutations,
         },
     })),
+    on(addAddressStart, (state: State) => ({ ...state, isAddingAddress: true })),
+    on(addAddressFailed, (state: State) => ({ ...state, isAddingAddress: false })),
+    on(addAddressSucceeded, (state: State) => ({ ...state, isAddingAddress: false })),
 ];
 
 export const addressesReducer = createReducer(initialState, ...ons);
