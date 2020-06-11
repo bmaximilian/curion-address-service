@@ -5,9 +5,12 @@ namespace App\Addresses\Api\Controllers;
 use App\Addresses\Api\Resources\AddressResource;
 use App\Addresses\Api\Resources\AddressResourceCollection;
 use App\Addresses\Database\Repositories\AddressRepository;
+use App\Addresses\Database\Repositories\SalutationRepository;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Http\Resources\Json\ResourceCollection;
+use Illuminate\Http\Request;
+use App\Addresses\Database\Models\Address;
 
 /**
  * Class AddressController
@@ -26,10 +29,15 @@ class AddressController extends Controller
      */
     private $addressRepository;
 
-    public function __construct(AddressRepository $addressRepository) {
-        $this->addressRepository = $addressRepository;
-    }
+    /**
+     * @var SalutationRepository
+     */
+    private $salutationRepository;
 
+    public function __construct(AddressRepository $addressRepository, SalutationRepository $salutationRepository) {
+        $this->addressRepository = $addressRepository;
+        $this->salutationRepository = $salutationRepository;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -91,5 +99,25 @@ class AddressController extends Controller
         $address = $this->addressRepository->findById($id);
 
         return new AddressResource($address);
+    }
+
+    /*
+    I still have to define a return value of the function?
+
+    */
+    public function store(Request $request): JsonResource
+    {
+        $salutation = $this->salutationRepository->findByKey($request->input('salutation'));
+        $address = new Address();
+        $address->first_name = $request->input('firstName');
+        $address->last_name = $request->input('lastName');
+        $address->address = $request->input('address');
+        $address->postal_code = $request->input('postalCode');
+        $address->city = $request->input('city');
+        $address->birthday = $request->input('birthday');
+        $address->salutation()->associate($salutation);
+        $newAddress = $this->addressRepository->store($address);
+
+        return new AddressResource($newAddress);
     }
 }

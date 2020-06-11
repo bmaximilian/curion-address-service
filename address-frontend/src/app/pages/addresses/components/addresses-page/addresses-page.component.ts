@@ -31,7 +31,7 @@ export class AddressesPageComponent implements OnInit {
      * Executed when the component is initialized
      */
     public ngOnInit(): void {
-        this.functionMenuEnabled = false;
+        this.functionMenuEnabled = true;
         this.store.dispatch(loadAddressesStart());
         this.store.dispatch(loadSalutationsStart());
     }

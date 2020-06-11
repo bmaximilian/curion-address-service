@@ -34,7 +34,7 @@ export class AddressFormDialogComponent {
      * Constructor of dialog component
      *
      * @param dialogRef - Reference to the dialog instance
-     * @param data - The passed dialog dta
+     * @param data - The passed dialog data
      * @param store - The application store of ngrx
      */
     constructor(
