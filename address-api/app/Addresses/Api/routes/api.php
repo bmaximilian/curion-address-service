@@ -10,7 +10,7 @@ Route::prefix('api')
     ->middleware(JwtMiddleware::class)
     ->group(static function () {
         Route::prefix('v1')->group(static function () {
-            Route::resource('addresses', AddressController::class)->only(['index', 'show']);
+            Route::resource('addresses', AddressController::class)->only(['index', 'show', 'store']);
 
             Route::group(['prefix' => 'salutations'], static function () {
                 Route::get('/', SalutationController::class.'@index');

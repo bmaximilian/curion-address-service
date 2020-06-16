@@ -1,0 +1,84 @@
+<h2 mat-dialog-title>{{ data.title | translate }}</h2>
+<mat-dialog-content class="mat-typography">
+    <form class="form-wrapper" [formGroup]="addressForm">
+        <mat-form-field appearance="standard" color="accent">
+            <mat-label>{{ 'pages.addresses.formDialog.salutation' | translate }}</mat-label>
+            <mat-select formControlName="salutation">
+                <mat-option *ngFor="let salutation of ($salutations | async)" [value]="salutation.key">
+                    {{ 'general.salutations.' + salutation.key | translate }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="standard" color="accent">
+            <mat-label>{{ 'pages.addresses.formDialog.firstName' | translate }}</mat-label>
+            <input
+                matInput
+                [placeholder]="'pages.addresses.formDialog.firstName' | translate"
+                formControlName="firstName"
+            />
+            <!--<mat-hint>Hint</mat-hint>-->
+        </mat-form-field>
+
+        <mat-form-field appearance="standard" color="accent">
+            <mat-label>{{ 'pages.addresses.formDialog.lastName' | translate }}</mat-label>
+            <input
+                matInput
+                [placeholder]="'pages.addresses.formDialog.lastName' | translate"
+                formControlName="lastName"
+            />
+            <!--<mat-hint>Hint</mat-hint>-->
+        </mat-form-field>
+        <mat-form-field appearance="standard" color="accent">
+            <mat-label>{{ 'pages.addresses.formDialog.birthday' | translate }}</mat-label>
+            <input
+                matInput
+                [placeholder]="'pages.addresses.formDialog.birthday' | translate"
+                [matDatepicker]="picker"
+                formControlName="birthday"
+            />
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <!--<mat-hint>Hint</mat-hint>-->
+        </mat-form-field>
+        <mat-form-field appearance="standard" color="accent">
+            <mat-label>{{ 'pages.addresses.formDialog.address' | translate }}</mat-label>
+            <input
+                matInput
+                [placeholder]="'pages.addresses.formDialog.address' | translate"
+                label="street"
+                formControlName="address"
+            />
+            <!--<mat-hint>Hint</mat-hint>-->
+        </mat-form-field>
+        <mat-form-field appearance="standard" color="accent">
+            <mat-label>{{ 'pages.addresses.formDialog.postalCode' | translate }}</mat-label>
+            <input
+                matInput
+                [placeholder]="'pages.addresses.formDialog.postalCode' | translate"
+                formControlName="postalCode"
+            />
+            <!--<mat-hint>Hint</mat-hint>-->
+        </mat-form-field>
+
+        <mat-form-field appearance="standard" color="accent">
+            <mat-label for="address-form-city">{{ 'pages.addresses.formDialog.city' | translate }}</mat-label>
+            <input
+                id="address-form-city"
+                matInput
+                [placeholder]="'pages.addresses.formDialog.city' | translate"
+                formControlName="city"
+            />
+            <!--<mat-hint>Hint</mat-hint>-->
+        </mat-form-field>
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button
+        mat-raised-button
+        color="accent"
+        (click)="handleSubmitClick()"
+    >
+        {{ data.submitButtonLabel | translate }}
+    </button>
+</mat-dialog-actions>

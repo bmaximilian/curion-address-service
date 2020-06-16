@@ -1,18 +1,26 @@
-<div>
-    <app-address-table
-        fxShow.gt-md="true"
-        fxHide.lt-md="true"
-        [addresses]="$addresses | async"
-        [showFunctionMenu]="functionMenuEnabled"
-        (edit)="editAddress($event)"
-        (delete)="deleteAddress($event)"
-    ></app-address-table>
-    <app-address-list
-        [addresses]="$addresses | async"
-        [showFunctionMenu]="functionMenuEnabled"
-        fxHide.gt-md="true"
-        fxShow.lt-md="true"
-        (edit)="editAddress($event)"
-        (delete)="deleteAddress($event)"
-    ></app-address-list>
-</div>
+<ng-container>
+    <mat-toolbar color="primary">{{ 'pages.addresses.title' | translate }}</mat-toolbar>
+    <div class="add-button-container">
+        <button mat-fab color="accent" aria-label="Add a address" (click)="addAddress()">
+            <mat-icon>add</mat-icon>
+        </button>
+    </div>
+    <div class="page-content">
+        <app-address-table
+            fxShow.gt-md="true"
+            fxHide.lt-md="true"
+            [addresses]="$addresses | async"
+            [showFunctionMenu]="functionMenuEnabled"
+            (edit)="editAddress($event)"
+            (delete)="deleteAddress($event)"
+        ></app-address-table>
+        <app-address-list
+            [addresses]="$addresses | async"
+            [showFunctionMenu]="functionMenuEnabled"
+            fxHide.gt-md="true"
+            fxShow.lt-md="true"
+            (edit)="editAddress($event)"
+            (delete)="deleteAddress($event)"
+        ></app-address-list>
+    </div>
+</ng-container>

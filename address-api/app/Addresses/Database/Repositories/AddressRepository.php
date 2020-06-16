@@ -16,7 +16,6 @@ class AddressRepository {
     public function findAll(): Collection {
         return Address::all();
     }
-
     /**
      * Finds one address
      *
@@ -26,5 +25,16 @@ class AddressRepository {
      */
     public function findById(string $id): Address {
         return Address::findOrFail($id);
+    }
+
+    /* Dominik
+    pushes some values
+    I still need to handover values somehow
+    I still need to define a return Type of the functio
+    Instead pusch one could use save()
+    */
+    public function store(Address $formValue): Address{
+        $formValue->save();
+        return $formValue;
     }
 }

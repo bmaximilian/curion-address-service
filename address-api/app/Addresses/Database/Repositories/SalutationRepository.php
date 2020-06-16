@@ -19,4 +19,8 @@ class SalutationRepository {
     public function findAll(): Collection {
         return Salutation::all();
     }
+
+    public function findByKey(string $key): Salutation {
+        return Salutation::where('key', $key)->first();
+    }
 }

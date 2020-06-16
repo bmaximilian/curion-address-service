@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
+import { MatDialog } from '@angular/material/dialog';
 import { State } from '../../store/reducer/addresses.reducer';
 import { loadAddressesStart } from '../../store/actions/address-list.actions';
 import { AddressItem } from '../../address.model';
+import { AddressFormDialogComponent } from '../address-form-dialog/address-form-dialog.component';
+import { loadSalutationsStart } from '../../store/actions/salutation.actions';
 
 @Component({
     selector: 'app-addresses-page',
@@ -18,8 +21,9 @@ export class AddressesPageComponent implements OnInit {
      * Constructor of Addresses page
      *
      * @param store - The store service
+     * @param dialog - The dialog service
      */
-    constructor(private store: Store<{ addresses: State }>) {
+    constructor(private store: Store<{ addresses: State }>, public dialog: MatDialog) {
         this.$addresses = store.pipe(select((state) => state.addresses.items));
     }
 
@@ -27,8 +31,21 @@ export class AddressesPageComponent implements OnInit {
      * Executed when the component is initialized
      */
     public ngOnInit(): void {
-        this.functionMenuEnabled = false;
+        this.functionMenuEnabled = true;
         this.store.dispatch(loadAddressesStart());
+        this.store.dispatch(loadSalutationsStart());
+    }
+
+    /**
+     * Handler that is executed when the user requests to add an address
+     */
+    public addAddress(): void {
+        this.dialog.open(AddressFormDialogComponent, {
+            data: {
+                title: 'pages.addresses.addDialog.title',
+                submitButtonLabel: 'pages.addresses.addDialog.submit',
+            },
+        });
     }
 
     /**

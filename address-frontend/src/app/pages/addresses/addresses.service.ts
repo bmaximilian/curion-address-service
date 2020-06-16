@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { CollectionApiResponse } from '../../../lib/util/api-response';
 import { AddressItem } from './address.model';
 
-interface AddressListResponse {
-    data: AddressItem[];
-}
+type AddressListResponse = CollectionApiResponse<AddressItem>;
 
 @Injectable()
 export class AddressesService {
@@ -19,9 +18,19 @@ export class AddressesService {
     /**
      * Returns a list of addresses
      *
-     * @returns - A observable that emits the response
+     * @returns - An observable that emits the response
      */
     public getAll(): Observable<AddressListResponse> {
         return this.http.get('/addresses') as Observable<AddressListResponse>;
+    }
+
+    /**
+     * Adds an address to the backend
+     *
+     * @param address - The address to add
+     * @returns - An observable that emits the added address
+     */
+    public add(address: AddressItem): Observable<AddressItem> {
+        return this.http.post('/addresses', address) as Observable<AddressItem>;
     }
 }
