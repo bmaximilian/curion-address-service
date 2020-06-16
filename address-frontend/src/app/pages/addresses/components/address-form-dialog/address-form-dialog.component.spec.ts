@@ -31,7 +31,18 @@ describe('AddressFormDialogComponent', () => {
                 ReactiveFormsModule,
             ],
             providers: [
-                { provide: MAT_DIALOG_DATA, useValue: {} },
+                {
+                    provide: MAT_DIALOG_DATA,
+                    useValue: {
+                        salutation: 'mr',
+                        firstName: 'Max',
+                        lastName: 'Mustermann',
+                        birthday: new Date(),
+                        address: 'test address',
+                        postalCode: '12345',
+                        city: 'test city',
+                    },
+                },
                 { provide: MatDialogRef, useValue: {} },
             ],
             declarations: [AddressFormDialogComponent],
