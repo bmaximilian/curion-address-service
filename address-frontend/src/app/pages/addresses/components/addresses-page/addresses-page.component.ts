@@ -1,12 +1,12 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
-import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { State } from '../../store/reducer/addresses.reducer';
 import { loadAddressesStart } from '../../store/actions/address-list.actions';
 import { AddressItem } from '../../address.model';
 import { loadSalutationsStart } from '../../store/actions/salutation.actions';
 import { deleteAddressStart } from '../../store/actions/address-del.actions';
-import { AddressFormDialogComponent, DialogData } from '../address-form-dialog/address-form-dialog.component';
+import { AddressFormDialogComponent } from '../address-form-dialog/address-form-dialog.component';
 
 @Component({
     selector: 'app-addresses-page',
@@ -36,6 +36,7 @@ export class AddressesPageComponent implements OnInit {
         this.store.dispatch(loadAddressesStart());
         this.store.dispatch(loadSalutationsStart());
     }
+
     /**
      * Handler that is executed when the user requests to add an address
      */
@@ -69,8 +70,6 @@ export class AddressesPageComponent implements OnInit {
             },
         });
         dialogRef.afterClosed().subscribe();
-        console.log(address.firstName);
-        console.log(address.id);
     }
 
     /**

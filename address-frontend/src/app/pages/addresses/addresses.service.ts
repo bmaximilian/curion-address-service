@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { CollectionApiResponse } from '../../../lib/util/api-response';
 import { AddressItem } from './address.model';
-import {AddressInfo} from 'net';
 
 type AddressListResponse = CollectionApiResponse<AddressItem>;
 
@@ -36,16 +35,23 @@ export class AddressesService {
     }
 
     /**
-     *Deletes an address record from backend
+     * Deletes an address record from backend
      *
-     *@param addrRec Record that is to delete
-     *@return An Observable that emits the deleted address
+     * @param addrRec - Record that is to delete
+     * @returns An Observable that emits when the address is deleted
      */
     public del(addrRec: AddressItem): Observable<AddressItem> {
         const addrId = addrRec.id;
         const aID = addrId.toString();
         return this.http.delete(`/addresses/${aID}`) as Observable<AddressItem>;
     }
+
+    /**
+     * Updates an address in the backend
+     *
+     * @param address - The address that should be updated
+     * @returns An Observable that emits the updated address
+     */
     public edit(address: AddressItem): Observable<AddressItem> {
         return this.http.put(`/addresses/${address.id}`, address) as Observable<AddressItem>;
     }

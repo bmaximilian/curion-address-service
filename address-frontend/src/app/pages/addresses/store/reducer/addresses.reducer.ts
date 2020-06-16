@@ -52,10 +52,10 @@ const ons = [
     on(editAddressSucceeded, (state: State, action) => ({
         ...state,
         items: state.items.map((item) => {
-            if(item.id === action.item.id) return action.item;
+            if (item.id === action.item.id) return action.item;
             return item;
         }),
-         isEditingAddress: false
+        isEditingAddress: false,
     })),
 ];
 
