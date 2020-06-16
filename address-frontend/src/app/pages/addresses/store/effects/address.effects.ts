@@ -40,13 +40,15 @@ export class AddressEffects {
         ),
     );
 
-    /* description of the function */
+    /**
+     * Deletes the passed address when dispatching the start action
+     */
     public delAddress$ = createEffect(() =>
         this.actions$.pipe(
             ofType(deleteAddressStart),
             mergeMap((addressStartAction) =>
-                this.addressesService.del(addressStartAction.item).pipe(
-                    map((response) => deleteAddressSucceeded({ item: response })),
+                this.addressesService.delete(addressStartAction.item).pipe(
+                    map(() => deleteAddressSucceeded()),
                     catchError((e) => of(deleteAddressFailed(e))),
                 ),
             ),

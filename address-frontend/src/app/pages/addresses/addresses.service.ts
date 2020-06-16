@@ -35,15 +35,13 @@ export class AddressesService {
     }
 
     /**
-     * Deletes an address record from backend
+     * Deletes an address in the backend
      *
-     * @param addrRec - Record that is to delete
-     * @returns An Observable that emits when the address is deleted
+     * @param address - The address to delete
+     * @returns - An observable that emits the deleted address
      */
-    public del(addrRec: AddressItem): Observable<AddressItem> {
-        const addrId = addrRec.id;
-        const aID = addrId.toString();
-        return this.http.delete(`/addresses/${aID}`) as Observable<AddressItem>;
+    public delete(address: AddressItem): Observable<AddressItem> {
+        return this.http.delete(`/addresses/${address.id}`) as Observable<AddressItem>;
     }
 
     /**

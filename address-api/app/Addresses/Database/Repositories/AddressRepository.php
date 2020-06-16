@@ -32,13 +32,7 @@ class AddressRepository {
         return $formValue;
     }
 
-    public function destroy(string $id): void {
-        $record = $this->findById($id);
-        $record->delete();
-        /* $delRecordId->DB::table('addresses')->where('id', $recordId)->delete(); */
+    public function destroy(string $id): void{
+        $this->findById($id)->delete();
     }
-
-    /* public function update():{
-
-    } */
 }

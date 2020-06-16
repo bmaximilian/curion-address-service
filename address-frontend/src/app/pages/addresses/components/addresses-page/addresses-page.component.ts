@@ -4,9 +4,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { State } from '../../store/reducer/addresses.reducer';
 import { loadAddressesStart } from '../../store/actions/address-list.actions';
 import { AddressItem } from '../../address.model';
-import { loadSalutationsStart } from '../../store/actions/salutation.actions';
-import { deleteAddressStart } from '../../store/actions/address-del.actions';
 import { AddressFormDialogComponent } from '../address-form-dialog/address-form-dialog.component';
+import { loadSalutationsStart } from '../../store/actions/salutation.actions';
+import { deleteAddressStart } from '../../store/actions/address-delete.actions';
 
 @Component({
     selector: 'app-addresses-page',
