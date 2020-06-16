@@ -9,7 +9,7 @@ import { addAddressStart } from '../../store/actions/address-add.actions';
 import { editAddressStart } from '../../store/actions/address-edit.actions';
 
 export interface DialogData {
-    id: number;
+    id?: number;
     salutation: string;
     title: string;
     submitButtonLabel: string;
@@ -53,13 +53,13 @@ export class AddressFormDialogComponent {
     ) {
         this.$salutations = store.pipe(select((state) => state.addresses.salutations.items));
         this.addressForm.setValue({
-            salutation: data.salutation,
-            firstName: data.firstName,
-            lastName: data.lastName,
-            birthday: data.birthday,
-            address: data.address,
-            postalCode: data.postalCode,
-            city: data.city,
+            salutation: data.salutation || '',
+            firstName: data.firstName || '',
+            lastName: data.lastName || '',
+            birthday: data.birthday || '',
+            address: data.address || '',
+            postalCode: data.postalCode || '',
+            city: data.city || '',
         });
     }
 
