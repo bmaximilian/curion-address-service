@@ -37,4 +37,10 @@ class AddressRepository {
         $formValue->save();
         return $formValue;
     }
+
+
+    public function destroy(string $id): void{
+        $this->findById($id)->delete();
+    }
+
 }

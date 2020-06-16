@@ -6,6 +6,7 @@ import { loadAddressesStart } from '../../store/actions/address-list.actions';
 import { AddressItem } from '../../address.model';
 import { AddressFormDialogComponent } from '../address-form-dialog/address-form-dialog.component';
 import { loadSalutationsStart } from '../../store/actions/salutation.actions';
+import { deleteAddressStart } from '../../store/actions/address-delete.actions';
 
 @Component({
     selector: 'app-addresses-page',
@@ -63,6 +64,7 @@ export class AddressesPageComponent implements OnInit {
      * @param address - Address that should be deleted
      */
     public deleteAddress(address: AddressItem): void {
-        // console.log('delete', address);
+        const item = address;
+        this.store.dispatch(deleteAddressStart({ item }));
     }
 }

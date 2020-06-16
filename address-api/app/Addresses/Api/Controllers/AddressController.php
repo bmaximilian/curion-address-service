@@ -119,5 +119,10 @@ class AddressController extends Controller
         $newAddress = $this->addressRepository->store($address);
 
         return new AddressResource($newAddress);
-    }
+
+}
+        public function destroy(string $id): void
+        {
+            $this->addressRepository->destroy($id);
+        }
 }
