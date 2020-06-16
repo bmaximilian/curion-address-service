@@ -5,6 +5,8 @@ import { of } from 'rxjs';
 import { AddressesService } from '../../addresses.service';
 import { loadAddressesFailed, loadAddressesStart, loadAddressesSucceeded } from '../actions/address-list.actions';
 import { addAddressFailed, addAddressStart, addAddressSucceeded } from '../actions/address-add.actions';
+import { deleteAddressStart, deleteAddressSucceeded, deleteAddressFailed } from '../actions/address-del.actions';
+import { editAddressStart, editAddressSucceeded, editAddressFailed } from '../actions/address-edit.actions';
 
 @Injectable()
 export class AddressEffects {
@@ -33,6 +35,31 @@ export class AddressEffects {
                 this.addressesService.add(addressStartAction.item).pipe(
                     map((response) => addAddressSucceeded({ item: response })),
                     catchError((e) => of(addAddressFailed(e))),
+                ),
+            ),
+        ),
+    );
+
+    /* description of the function */
+    public delAddress$ = createEffect(() =>
+        this.actions$.pipe(
+            ofType(deleteAddressStart),
+            mergeMap((addressStartAction) =>
+                this.addressesService.del(addressStartAction.item).pipe(
+                    map((response) => deleteAddressSucceeded({ item: response })),
+                    catchError((e) => of(deleteAddressFailed(e))),
+                ),
+            ),
+        ),
+    );
+
+    public editAddress$ = createEffect(() =>
+        this.actions$.pipe(
+            ofType(editAddressStart),
+            mergeMap((addressStartAction) =>
+                this.addressesService.edit(addressStartAction.item).pipe(
+                    map((response) => editAddressSucceeded({ item: response })),
+                    catchError((e) => of(editAddressFailed(e))),
                 ),
             ),
         ),

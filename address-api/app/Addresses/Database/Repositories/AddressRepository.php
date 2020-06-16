@@ -27,14 +27,18 @@ class AddressRepository {
         return Address::findOrFail($id);
     }
 
-    /* Dominik
-    pushes some values
-    I still need to handover values somehow
-    I still need to define a return Type of the functio
-    Instead pusch one could use save()
-    */
     public function store(Address $formValue): Address{
         $formValue->save();
         return $formValue;
     }
+
+    public function destroy(string $id): void {
+        $record = $this->findById($id);
+        $record->delete();
+        /* $delRecordId->DB::table('addresses')->where('id', $recordId)->delete(); */
+    }
+
+    /* public function update():{
+
+    } */
 }

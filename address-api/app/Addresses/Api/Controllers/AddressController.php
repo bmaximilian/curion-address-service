@@ -11,7 +11,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 use Illuminate\Http\Request;
 use App\Addresses\Database\Models\Address;
-
+use Illuminate\Support\Facades\Log;
 /**
  * Class AddressController
  *
@@ -101,10 +101,6 @@ class AddressController extends Controller
         return new AddressResource($address);
     }
 
-    /*
-    I still have to define a return value of the function?
-
-    */
     public function store(Request $request): JsonResource
     {
         $salutation = $this->salutationRepository->findByKey($request->input('salutation'));
@@ -120,4 +116,9 @@ class AddressController extends Controller
 
         return new AddressResource($newAddress);
     }
+
+      public function destroy(string $id): void
+        {
+           $this->addressRepository->destroy($id);
+        }
 }
