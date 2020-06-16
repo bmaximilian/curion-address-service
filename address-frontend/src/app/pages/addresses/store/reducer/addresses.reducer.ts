@@ -42,10 +42,9 @@ const ons = [
     on(addAddressFailed, (state: State) => ({ ...state, isAddingAddress: false })),
     on(addAddressSucceeded, (state: State) => ({ ...state, isAddingAddress: false })),
 
-    on(deleteAddressStart, (state: State) => ({ ...state, isDeletingAddress: true})),
+    on(deleteAddressStart, (state: State) => ({ ...state, isDeletingAddress: true })),
     on(deleteAddressFailed, (state: State) => ({ ...state, isDeletingAddress: false })),
     on(deleteAddressSucceeded, (state: State) => ({ ...state, isDeletingAddress: false })),
-
 ];
 
 export const addressesReducer = createReducer(initialState, ...ons);

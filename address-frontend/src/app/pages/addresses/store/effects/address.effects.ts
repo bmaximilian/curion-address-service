@@ -38,9 +38,10 @@ export class AddressEffects {
             ),
         ),
     );
-/**
-* Deletes the passed address when dispatching the start action
-*/
+
+    /**
+     * Deletes the passed address when dispatching the start action
+     */
     public delAddress$ = createEffect(() =>
         this.actions$.pipe(
             ofType(deleteAddressStart),
