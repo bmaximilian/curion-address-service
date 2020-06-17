@@ -42,6 +42,10 @@
             "addDialog": {
                 "title": "Neue Adresse hinzufügen",
                 "submit": "Hinzufügen"
+            },
+            "editDialog": {
+                "title": "Adresse bearbeiten",
+                "submit": "Erneut Speichern"
             }
         }
     }

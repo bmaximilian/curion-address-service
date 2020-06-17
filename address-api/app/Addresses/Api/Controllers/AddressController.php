@@ -101,10 +101,6 @@ class AddressController extends Controller
         return new AddressResource($address);
     }
 
-    /*
-    I still have to define a return value of the function?
-
-    */
     public function store(Request $request): JsonResource
     {
         $salutation = $this->salutationRepository->findByKey($request->input('salutation'));
@@ -119,5 +115,10 @@ class AddressController extends Controller
         $newAddress = $this->addressRepository->store($address);
 
         return new AddressResource($newAddress);
+    }
+
+    public function destroy(string $id): void
+    {
+       $this->addressRepository->destroy($id);
     }
 }

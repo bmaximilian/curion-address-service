@@ -33,4 +33,24 @@ export class AddressesService {
     public add(address: AddressItem): Observable<AddressItem> {
         return this.http.post('/addresses', address) as Observable<AddressItem>;
     }
+
+    /**
+     * Deletes an address in the backend
+     *
+     * @param address - The address to delete
+     * @returns - An observable that emits the deleted address
+     */
+    public delete(address: AddressItem): Observable<AddressItem> {
+        return this.http.delete(`/addresses/${address.id}`) as Observable<AddressItem>;
+    }
+
+    /**
+     * Updates an address in the backend
+     *
+     * @param address - The address that should be updated
+     * @returns An Observable that emits the updated address
+     */
+    public edit(address: AddressItem): Observable<AddressItem> {
+        return this.http.put(`/addresses/${address.id}`, address) as Observable<AddressItem>;
+    }
 }
